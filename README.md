@@ -1,15 +1,17 @@
 # YouTube Video End Time Calculator Calculator
 
-YouTube Video End Time Calculator is a browser extension for Microsoft Edge (Chromium) that calculates and displays the estimated end time of a YouTube video. It adds a new element to the seek bar, next to where YouTube shows the duration and current position of the video, that displays the time when the video is estimated to end based on the current playback position and duration.
+Your time is valuable, and while you may not notice just how much time passes by when you're browsing YouTube, seeing the estimated end time of a video may make you more aware.
+
+YouTube Video End Time Calculator is a browser extension for Google Chrome and Microsoft Edge (Chromium) that calculates and displays the estimated end time of a YouTube video. It adds a new element to the seek bar, next to where YouTube shows the duration and current position of the video, that displays the time when the video is estimated to end based on the current playback position and duration.
 
 ## Installation
 
 To install YouTube Video End Time Calculator, follow these steps:
 
 1. Download the source code from the [GitHub repository](https://github.com/lateralrook/youtube-end-time-calculator).
-2. Open Microsoft Edge and navigate to `edge://extensions`.
-3. Enable developer mode by clicking the toggle switch in the bottom-left corner of the page.
-4. Click the "Load unpacked" button in the top-left corner of the page.
+2. Open Google Chrome or Microsoft Edge and navigate to `chrome://extensions/` or `edge://extensions` respectively.
+3. Enable developer mode by clicking the toggle switch.
+4. Click the "Load unpacked" button.
 5. Select the directory where you downloaded the source code and click "Select folder".
 
 ## Usage
