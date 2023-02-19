@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "YouTube Video End Time Calculator",
+    "version": "1.0",
+    "description": "Calculates the end time of a YouTube video",
+	 "icons": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs",
+        "https://www.youtube.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}

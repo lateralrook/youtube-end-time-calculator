@@ -1,0 +1,12 @@
+.estimated-end-time {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
