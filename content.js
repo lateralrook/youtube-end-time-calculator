@@ -1,62 +1,59 @@
-// Get the video player element
-const video = document.querySelector('video');
+// Add an event listener for the load event
+window.addEventListener('load', function() {
+  // Define the updateSeekBar function
+  function updateSeekBar() {
+    // Get the seek bar element
+    const seekBar = document.querySelector('.ytp-progress-bar-container');
 
-// Create a function to calculate the estimated end time
-function calculateEndTime() {
-  // Get the current time and duration of the video
-  const currentTime = video.currentTime;
-  const duration = video.duration;
+    // Remove any existing end time element
+    const existingEndTimeElement = document.querySelector('#estimated-end-time');
+    if (existingEndTimeElement) {
+      existingEndTimeElement.remove();
+    }
 
-  // Calculate the remaining time in the video
-  const remainingTime = duration - currentTime;
+    // Create a new span element to hold the estimated end time
+    const endTimeElement = document.createElement('span');
+    endTimeElement.id = 'estimated-end-time';
+    endTimeElement.style.position = 'absolute';
+    endTimeElement.style.left = '0';
+    endTimeElement.style.bottom = '30px';
+    endTimeElement.style.margin = '0 0 0 10px';
+    endTimeElement.style.fontSize = '12px';
+    endTimeElement.style.color = '#fff';
+    endTimeElement.style.padding = '3px 5px';
+    endTimeElement.style.borderRadius = '3px';
+    endTimeElement.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 
-  // Create a new Date object with the current time
-  const currentTimeDate = new Date();
+    // Calculate the estimated end time
+    const estimatedEndTime = calculateEndTime();
 
-  // Add the remaining time in milliseconds to the current time
-  currentTimeDate.setSeconds(currentTimeDate.getSeconds() + remainingTime);
+    // Set the text content of the span element to the estimated end time
+    endTimeElement.textContent = `Ends at ${estimatedEndTime}`;
 
-  // Format the date as a string in the format "hh:mm:ss"
-  const endTimeString = currentTimeDate.toLocaleTimeString('en-US', {hour12: false});
-
-  return endTimeString;
-}
-
-let endTimeElement;
-
-function updateSeekBar() {
-  // Get the seek bar element
-  const seekBar = document.querySelector('.ytp-progress-bar-container');
-
-  // If the end time element already exists, update its text content and return
-  if (endTimeElement) {
-    endTimeElement.textContent = `Ends at ${calculateEndTime()}`;
-    return;
+    // Add the span element to the seek bar
+    seekBar.appendChild(endTimeElement);
   }
 
-  // Create a new span element to hold the estimated end time
-  endTimeElement = document.createElement('span');
-  endTimeElement.style.position = 'absolute';
-  endTimeElement.style.left = '0';
-  endTimeElement.style.bottom = '30px';
-  endTimeElement.style.margin = '0 0 0 10px';
-  endTimeElement.style.fontSize = '12px';
-  endTimeElement.style.color = '#fff';
-  endTimeElement.style.padding = '3px 5px';
-  endTimeElement.style.borderRadius = '3px';
-  endTimeElement.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+  // Add event listeners for various video events
+  const videoPlayer = document.querySelector('video');
+  if (videoPlayer) {
+    videoPlayer.addEventListener('loadedmetadata', updateSeekBar);
+    videoPlayer.addEventListener('seeking', updateSeekBar);
+    videoPlayer.addEventListener('timeupdate', updateSeekBar);
+  }
+});
+
+// Define the calculateEndTime function
+function calculateEndTime() {
+  // Get the video player element
+  const videoPlayer = document.querySelector('video');
+
+  // Get the video duration and current time
+  const duration = videoPlayer.duration;
+  const currentTime = videoPlayer.currentTime;
 
   // Calculate the estimated end time
-  const estimatedEndTime = calculateEndTime();
+  const estimatedEndTime = new Date(Date.now() + (duration - currentTime) * 1000).toLocaleTimeString();
 
-  // Set the text content of the span element to the estimated end time
-  endTimeElement.textContent = `Ends at ${estimatedEndTime}`;
-
-  // Add the span element to the seek bar
-  seekBar.appendChild(endTimeElement);
+  return estimatedEndTime;
 }
-
-
-
-// Call the updateSeekBar function every second
-setInterval(updateSeekBar, 1000);
