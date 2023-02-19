@@ -8,7 +8,7 @@ YouTube Video End Time Calculator is a browser extension for Google Chrome and M
 
 Here's an example of YouTube Video End Time Calculator in action, calculating based on the position of the video:
 
-![Screenshot of YouTube Video End Time Calculator extension in action](./screenshot.png)
+![Screenshot of YouTube Video End Time Calculator extension in action](./action.gif)
 
 *Credit: This screenshot is from a video by [Professor Leonard](https://www.youtube.com/@ProfessorLeonard).*
 
